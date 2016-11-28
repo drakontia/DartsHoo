@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Regid:</strong>
+  <%= @round.regid %>
+</p>
+
+<p>
+  <strong>Roundno:</strong>
+  <%= @round.roundno %>
+</p>
+
+<p>
+  <strong>Shot1st:</strong>
+  <%= @round.shot1st %>
+</p>
+
+<p>
+  <strong>Shot2nd:</strong>
+  <%= @round.shot2nd %>
+</p>
+
+<p>
+  <strong>Shot3rd:</strong>
+  <%= @round.shot3rd %>
+</p>
+
+<%= link_to 'Edit', edit_round_path(@round) %> |
+<%= link_to 'Back', rounds_path %>

@@ -1,0 +1,62 @@
+<%= form_for(game) do |f| %>
+  <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gametype %>
+    <%= f.text_field :gametype %>
+  </div>
+
+  <div class="field">
+    <%= f.label :created_at %>
+    <%= f.date_select :created_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :updated_at %>
+    <%= f.date_select :updated_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :result %>
+    <%= f.text_field :result %>
+  </div>
+
+  <div class="field">
+    <%= f.label :regnum %>
+    <%= f.number_field :regnum %>
+  </div>
+
+  <div class="field">
+    <%= f.label :player1st %>
+    <%= f.number_field :player1st %>
+  </div>
+
+  <div class="field">
+    <%= f.label :player2nd %>
+    <%= f.number_field :player2nd %>
+  </div>
+
+  <div class="field">
+    <%= f.label :player3rd %>
+    <%= f.number_field :player3rd %>
+  </div>
+
+  <div class="field">
+    <%= f.label :player4th %>
+    <%= f.number_field :player4th %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gametype:</strong>
+  <%= @game.gametype %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @game.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @game.updated_at %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @game.result %>
+</p>
+
+<p>
+  <strong>Regnum:</strong>
+  <%= @game.regnum %>
+</p>
+
+<p>
+  <strong>Player1st:</strong>
+  <%= @game.player1st %>
+</p>
+
+<p>
+  <strong>Player2nd:</strong>
+  <%= @game.player2nd %>
+</p>
+
+<p>
+  <strong>Player3rd:</strong>
+  <%= @game.player3rd %>
+</p>
+
+<p>
+  <strong>Player4th:</strong>
+  <%= @game.player4th %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

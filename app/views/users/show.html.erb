@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Dartsliveid:</strong>
+  <%= @user.dartsliveid %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @user.rating %>
+</p>
+
+<p>
+  <strong>Cricketstats:</strong>
+  <%= @user.cricketstats %>
+</p>
+
+<p>
+  <strong>Stats01:</strong>
+  <%= @user.stats01 %>
+</p>
+
+<p>
+  <strong>Registered at:</strong>
+  <%= @user.registered_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @user.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

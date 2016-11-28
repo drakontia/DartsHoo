@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Userid:</strong>
+  <%= @reg.userid %>
+</p>
+
+<p>
+  <strong>Gameid:</strong>
+  <%= @reg.gameid %>
+</p>
+
+<p>
+  <strong>Regno:</strong>
+  <%= @reg.regno %>
+</p>
+
+<p>
+  <strong>Gametype:</strong>
+  <%= @reg.gametype %>
+</p>
+
+<p>
+  <strong>Gamestats:</strong>
+  <%= @reg.gamestats %>
+</p>
+
+<p>
+  <strong>Roundnum:</strong>
+  <%= @reg.roundnum %>
+</p>
+
+<%= link_to 'Edit', edit_reg_path(@reg) %> |
+<%= link_to 'Back', regs_path %>

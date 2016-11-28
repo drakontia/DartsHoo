@@ -1,0 +1,2 @@
+class RegCricket < Reg
+end

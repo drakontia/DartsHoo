@@ -1,0 +1,2 @@
+class Reg < ApplicationRecord
+end

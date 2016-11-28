@@ -1,0 +1,47 @@
+<%= form_for(reg) do |f| %>
+  <% if reg.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reg.errors.count, "error") %> prohibited this reg from being saved:</h2>
+
+      <ul>
+      <% reg.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :userid %>
+    <%= f.number_field :userid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gameid %>
+    <%= f.number_field :gameid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :regno %>
+    <%= f.number_field :regno %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gametype %>
+    <%= f.text_field :gametype %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gamestats %>
+    <%= f.number_field :gamestats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :roundnum %>
+    <%= f.number_field :roundnum %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
