@@ -1,4 +1,4 @@
-class CreateRegCrickets < ActiveRecord::Migration[5.0]
+class CreateRegcrickets < ActiveRecord::Migration[5.0]
   def change
     create_table :regcrickets do |t|
       t.integer :userid
