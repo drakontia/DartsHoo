@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   validates :dartslive_id, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
+  validates_presence_of :password, :password_confirmation
+  validates_confirmation_of :password
 end
