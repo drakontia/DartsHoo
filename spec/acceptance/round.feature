@@ -37,6 +37,5 @@ Feature: Round has 3 shots and total score
 		When Reg has 30 points as rest of 01 game.
 		And User shot single 11 at first.
 		And User shot double 16 at second.
-		Then Round record busrt.
+		Then Round appear busrt.
 		And Round record no shot at third.
-		And the Round is over.
