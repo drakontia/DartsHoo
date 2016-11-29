@@ -6,7 +6,7 @@ class CreateRegcrickets < ActiveRecord::Migration[5.0]
       t.integer :regno
       t.string  :gametype
       t.integer :gamestats
-      t.integer :roundnum
+      t.integer :round_count
       t.integer :mark20
       t.integer :mark19
       t.integer :mark18

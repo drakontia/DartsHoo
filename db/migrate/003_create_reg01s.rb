@@ -6,7 +6,7 @@ class CreateReg01s < ActiveRecord::Migration[5.0]
       t.integer :regno
       t.string  :gametype
       t.integer :gamestats
-      t.integer :roundnum
+      t.integer :round_count
       t.integer :number01
 
       t.timestamps
