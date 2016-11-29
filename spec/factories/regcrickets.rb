@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :reg do
+  factory :regcricket do
     userid 1
     gameid 1
     regno 1
