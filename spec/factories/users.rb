@@ -7,5 +7,6 @@ FactoryGirl.define do
     stats01 1
     registered_at "2016-11-24"
     updated_at "2016-11-24"
+    password_digest 'password'
   end
 end
