@@ -2,10 +2,10 @@ class CreateGames < ActiveRecord::Migration[5.0]
   def change
     create_table :games do |t|
       t.string :gametype
-      t.date :created_at
-      t.date :updated_at
+      t.datetime :created_at
+      t.datetime :updated_at
       t.string :result
-      t.integer :regnum
+      t.integer :reg_count
       t.integer :player1st
       t.integer :player2nd
       t.integer :player3rd
