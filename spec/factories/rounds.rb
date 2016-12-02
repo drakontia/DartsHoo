@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :round do
-    regid 1
     roundno 1
-    shot1st "MyString"
-    shot2nd "MyString"
-    shot3rd "MyString"
+    shot1st "12S"
+    shot2nd "16T"
+    shot3rd "04D"
+    #reg01
+    #regcricket
   end
 end
