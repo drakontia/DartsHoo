@@ -38,7 +38,9 @@ group :development do
   gem 'guard', '2.11.1'
   gem 'guard-rspec'
   gem 'rb-readline'
-  gem 'rb-inotify'
+  gem 'rb-inotify', require: nil
+  gem 'rb-fsevent', require: nil
+  gem 'rb-fchange', require: nil
 end
 
 group :test do
