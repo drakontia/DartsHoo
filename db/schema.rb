@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "result"
-    t.integer  "regnum"
+    t.integer  "reg_count"
     t.integer  "player1st"
     t.integer  "player2nd"
     t.integer  "player3rd"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
-    t.integer  "roundnum"
+    t.integer  "round_count"
     t.integer  "number01"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "regcrickets", force: :cascade do |t|
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
-    t.integer  "roundnum"
+    t.integer  "round_count"
     t.integer  "mark20"
     t.integer  "mark19"
     t.integer  "mark18"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer  "mark16"
     t.integer  "mark15"
     t.integer  "markbull"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -72,16 +72,14 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.integer  "dartsliveid"
-    t.integer  "rating"
-    t.integer  "cricketstats"
-    t.integer  "stats01"
-    t.datetime "registered_at"
-    t.datetime "updated_at",      null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
+    t.string   "user_name"
+    t.integer  "dartslive_id"
+    t.float    "statscricket"
+    t.float    "stats01"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.string   "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
