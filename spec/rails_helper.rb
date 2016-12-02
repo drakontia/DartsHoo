@@ -12,6 +12,8 @@ require 'turnip/rspec'
 require 'turnip/capybara'
 Dir.glob('spec/steps/**/*steps.rb') { |f| load f, true }
 
+require 'database_cleaner'
+
 ActiveRecord::Migration.maintain_test_schema!
 
 Monban.test_mode!
@@ -23,9 +25,21 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  config.include FactoryGirl::Syntax::Methods
+
   config.include Monban::Test::Helpers, type: :feature
   config.include Monban::Test::ControllerHelpers, type: :controller
+
+  config.before :suite do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before :each do
+    DatabaseCleaner.start
+  end
+
   config.after :each do
     Monban.test_reset!
+    DatabaseCleaner.clean
   end
 end
