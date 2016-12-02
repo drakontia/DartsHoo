@@ -27,6 +27,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rubocop'
   gem 'sqlite3'
+  gem 'database_cleaner'
 end
 
 group :development do
