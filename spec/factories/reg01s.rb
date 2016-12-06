@@ -1,10 +1,24 @@
 FactoryGirl.define do
   factory :reg01 do
-    regno 1
+    sequence(:regno)
     gametype "01game"
-    gamestats 1
-    roundnum 1
-    user
-    game
+    number01 701
+    #user
+    #game
+
+    factory :reg01_with_rounds do
+      transient do
+        round_count 9
+      end
+
+      after(:create) do |reg, evaluator|
+        create_list(:round,
+                    evaluator.round_count,
+                    { shot1st: "BULL",
+                    shot2nd: "05D",
+                    shot3rd: "05S",
+                    reg01: reg })
+      end
+    end
   end
 end
