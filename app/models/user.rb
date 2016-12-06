@@ -37,8 +37,7 @@ class User < ApplicationRecord
   end
 
   def ratingnum
-    ratingnum = ((rating01 + ratingcricket) / 2).round(2)
-    ratingnum
+    ((rating01 + ratingcricket) / 2).round(2)
   end
 
   def rating
