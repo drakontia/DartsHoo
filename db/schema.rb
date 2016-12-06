@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 7) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "card_name"
-    t.integer  "card_number"
+    t.text     "card_number"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 7) do
 
   create_table "games", force: :cascade do |t|
     t.string   "gametype"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "result"
-    t.integer  "reg_count"
+    t.integer  "reg01s_count"
+    t.integer  "regcrickets_count"
     t.integer  "player1st"
     t.integer  "player2nd"
     t.integer  "player3rd"
@@ -41,24 +42,24 @@ ActiveRecord::Schema.define(version: 7) do
   end
 
   create_table "reg01s", force: :cascade do |t|
-    t.integer  "userid"
-    t.integer  "gameid"
+    t.integer  "user_id"
+    t.integer  "game_id"
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
-    t.integer  "round_count"
+    t.integer  "rounds_count"
     t.integer  "number01"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "regcrickets", force: :cascade do |t|
-    t.integer  "userid"
-    t.integer  "gameid"
+    t.integer  "user_id"
+    t.integer  "game_id"
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
-    t.integer  "round_count"
+    t.integer  "rounds_count"
     t.integer  "mark20"
     t.integer  "mark19"
     t.integer  "mark18"
@@ -66,18 +67,19 @@ ActiveRecord::Schema.define(version: 7) do
     t.integer  "mark16"
     t.integer  "mark15"
     t.integer  "markbull"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "rounds", force: :cascade do |t|
-    t.integer  "regid"
+    t.integer  "reg01_id"
+    t.integer  "regcricket_id"
     t.integer  "roundno"
     t.string   "shot1st"
     t.string   "shot2nd"
     t.string   "shot3rd"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(version: 7) do
     t.string   "password_digest"
     t.float    "statscricket"
     t.float    "stats01"
+    t.integer  "reg01s_count"
+    t.integer  "regcrickets_count"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
