@@ -5,7 +5,8 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.datetime :created_at
       t.datetime :updated_at
       t.string :result
-      t.integer :reg_count
+      t.integer :reg01s_count
+      t.integer :regcrickets_count
       t.integer :player1st
       t.integer :player2nd
       t.integer :player3rd
