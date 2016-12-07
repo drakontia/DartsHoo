@@ -6,7 +6,7 @@ module Reg
     belongs_to :game, optional: true
     has_many :rounds, -> { order('roundno asc') }
 
-    attr_accessor :gametype, :regno, :round_count
+    attr_accessor :gametype, :regno, :rounds_count
   end
 
   def regend?
