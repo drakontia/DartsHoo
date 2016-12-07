@@ -21,4 +21,16 @@ class Reg01 < ApplicationRecord
     self.rounds.last.update(roundno: self.rounds.length)
   end
 
+  def new_shot
+
+  end
+
+  def round_burst
+
+  end
+
+  def round_over
+
+  end
+
 end
