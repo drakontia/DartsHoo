@@ -1,7 +1,7 @@
 class Reg01 < ApplicationRecord
   include Reg
 
-  attr_accessor :regno, :gametype, :number01
+  attr_accessor :regno, :gametype, :number01, :rounds_count
 
   def total_point
     self.rounds.inject(0) { |total, round|
@@ -9,14 +9,16 @@ class Reg01 < ApplicationRecord
     }
   end
 
-  def gamestats
-    n = 0
-    totals = self.rounds.inject(0) do |total, round|
-      total + round.total_score unless total[0] > ( self.number01 * 0.8 )
-      n += 1 unless total > ( self.number01 * 0.8 )
-      [total, n]
+  def rest_point
+    self.number01 - self.total_point
+  end
+
+  def new_round
+    if self.total_point > ( self.number01 * 0.8 ) && self.gamestats.blank?
+      self.gamestats = ( self.total_point / self.rounds.length ).round(0)
     end
-    totals.sort { |t, n| ( t / n ).round(0) }
+    self.rounds << Round.new
+    self.rounds.last.update(roundno: self.rounds.length)
   end
 
 end
