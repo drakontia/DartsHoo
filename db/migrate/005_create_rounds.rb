@@ -7,6 +7,7 @@ class CreateRounds < ActiveRecord::Migration[5.0]
       t.string :shot1st
       t.string :shot2nd
       t.string :shot3rd
+      t.string :round_result
 
       t.timestamps
     end
