@@ -9,8 +9,8 @@ module Reg
     attr_accessor :gametype, :regno, :rounds_count
   end
 
-  def regend?
-    self.regno > 15
+  def reg_end?
+    self.rounds_count == 15
   end
 
 end

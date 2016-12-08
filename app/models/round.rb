@@ -4,6 +4,7 @@ class Round < ApplicationRecord
   attr_accessor :roundno, :shot1st, :shot2nd, :shot3rd
 
   def total_score
+    return 0 if self.round_result == 'Burst'
     Round.score(self.shot1st) + Round.score(self.shot2nd) + Round.score(self.shot3rd)
   end
 
