@@ -4,19 +4,19 @@ class Round < ApplicationRecord
   attr_accessor :roundno, :shot1st, :shot2nd, :shot3rd
 
   def total_score
-    Round.score(@shot1st) + Round.score(@shot2nd) + Round.score(@shot3rd)
+    Round.score(self.shot1st) + Round.score(self.shot2nd) + Round.score(self.shot3rd)
   end
 
   class << self
     def score(shot)
-      if shot == 'OUT' or shot == 'NONE'
+      if shot == 'OUT' or shot == 'NONE' or shot.nil?
         score = 0
       elsif shot == 'BULL' or shot == 'DBULL'
         score = 50
       elsif shot == 'SBULL'
         score = 25
       else
-        score = multi(shot)
+        score = self.multi(shot)
       end
       score
     end
