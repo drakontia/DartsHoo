@@ -16,30 +16,29 @@ describe "reg01" do
   it "has total points of the rounds" do
     reg.rounds << under
     reg.new_round
-    reg.rounds.last.update(shot1st: '17S')
-    reg.rounds.last.update(shot2nd: '17D')
-    reg.rounds.last.update(shot3rd: 'NONE')
+    reg.new_shot('17S')
+    reg.new_shot('17D')
     expect(reg.rounds.length).to eq(6)
-    expect(reg.rounds.first.roundno).to eq(1)
+    expect(reg.rounds.last.shot3rd).to eq('NONE')
     expect(reg.gamestats).to eq(130)
     expect(reg.total_point).to eq(701)
   end
 
   it "has total points of the rounds with burst" do
-    reg.rounds << burst
-    reg.rounds.last.update(shot2nd: '20T')
-    reg.rounds.last.update(shot3rd: 'NONE')
+    reg.new_round
+    reg.new_shot('BULL')
+    reg.new_shot('20T')
     expect(reg.rounds.length).to eq(5)
-    expect(reg.total_point).to eq(630)
+    expect(reg.rounds.last.shot3rd).to eq('NONE')
+    expect(reg.total_point).to eq(600)
   end
 
   it "has total points of the rounds under reg over points" do
     reg.new_round
-    reg.rounds.last.update(shot1st: 'OUT')
-    reg.rounds.last.update(shot2nd: '20T')
-    reg.rounds.last.update(shot3rd: 'OUT')
+    reg.new_shot('OUT')
+    reg.new_shot('20T')
+    reg.new_shot('OUT')
     expect(reg.rounds.length).to eq(5)
-    #expect(reg.rounds.first.roundno).to eq(5)
     expect(reg.rounds.last.roundno).to eq(5)
     expect(reg.rounds.last.shot1st).to eq('OUT')
     expect(reg.total_point).to eq(660)
