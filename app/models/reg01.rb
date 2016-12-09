@@ -33,22 +33,25 @@ class Reg01 < ApplicationRecord
     if self.rest_point < 0
       round_burst
     elsif self.rest_point == 0
-      round_over
+      reg_over
     end
   end
 
   def round_burst
     self.rounds.last.update(round_result: 'Burst')
+
     if self.rounds.last.shot2nd.blank?
       self.rounds.last.update(shot2nd: 'NONE')
+      self.rounds.last.update(shot3rd: 'NONE')
     elsif self.rounds.last.shot3rd.blank?
       self.rounds.last.update(shot3rd: 'NONE')
     end
   end
 
-  def round_over
+  def reg_over
     if self.rounds.last.shot2nd.blank?
       self.rounds.last.update(shot2nd: 'NONE')
+      self.rounds.last.update(shot3rd: 'NONE')
     elsif self.rounds.last.shot3rd.blank?
       self.rounds.last.update(shot3rd: 'NONE')
     end
