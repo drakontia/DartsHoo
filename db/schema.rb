@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 7) do
     t.string   "shot1st"
     t.string   "shot2nd"
     t.string   "shot3rd"
+    t.string   "round_result"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
