@@ -4,10 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :user_name
       t.string   :email
       t.string   :password_digest
-      t.float    :statscricket
-      t.float    :stats01
-      t.integer  :reg01s_count
-      t.integer  :regcrickets_count
       t.datetime :created_at
       t.datetime :updated_at
 

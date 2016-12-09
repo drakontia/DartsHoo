@@ -15,35 +15,35 @@ ActiveRecord::Schema.define(version: 7) do
   create_table "cards", force: :cascade do |t|
     t.string   "card_name"
     t.text     "card_number"
+    t.float    "statscricket"
+    t.float    "stats01"
+    t.integer  "reg01s_count"
+    t.integer  "regcrickets_count"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "game_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["card_number"], name: "index_cards_on_card_number", unique: true
+  end
+
+  create_table "cards_games", id: false, force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "game_id"
+    t.index ["card_id"], name: "index_cards_games_on_card_id"
+    t.index ["game_id"], name: "index_cards_games_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
     t.string   "gametype"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "result"
-    t.integer  "reg01s_count"
-    t.integer  "regcrickets_count"
-    t.integer  "player1st"
-    t.integer  "player2nd"
-    t.integer  "player3rd"
-    t.integer  "player4th"
-  end
-
-  create_table "games_users", id: false, force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "user_id"
-    t.index ["game_id"], name: "index_games_users_on_game_id"
-    t.index ["user_id"], name: "index_games_users_on_user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "game_result"
+    t.integer  "cards_count"
+    t.integer  "player_id"
   end
 
   create_table "reg01s", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
+    t.integer  "card_id"
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
@@ -54,8 +54,7 @@ ActiveRecord::Schema.define(version: 7) do
   end
 
   create_table "regcrickets", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
+    t.integer  "card_id"
     t.integer  "regno"
     t.string   "gametype"
     t.integer  "gamestats"
@@ -87,10 +86,6 @@ ActiveRecord::Schema.define(version: 7) do
     t.string   "user_name"
     t.string   "email"
     t.string   "password_digest"
-    t.float    "statscricket"
-    t.float    "stats01"
-    t.integer  "reg01s_count"
-    t.integer  "regcrickets_count"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
