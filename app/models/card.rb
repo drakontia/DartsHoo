@@ -3,6 +3,8 @@ class Card < ApplicationRecord
   has_many :regs
   has_and_belongs_to_many :games
 
+  attr_accessor :card_name, :card_number, :stats01, :statscricket
+
   validates :card_name, length: { maximum: 16 }
   validates :card_number, length: { is: 12 }, numericality: { only_integer: true }
 
@@ -15,9 +17,9 @@ class Card < ApplicationRecord
     if self.stats01 < 40 then
       rating01 = 1
     elsif self.stats01 >= 40 and self.stats01 < 95 then
-      rating01 = 2 + ((self.stats01 - 40) / 5).round(2)
+      rating01 = 2 + ((self.stats01 - 40) / 5.0).round(2)
     elsif self.stats01 >= 95 and self.stats01 < 130 then
-      rating01 = 13 + ((self.stats01 - 95) / 7).round(2)
+      rating01 = 13 + ((self.stats01 - 95) / 7.0).round(2)
     elsif self.stats01 >= 130 then
       rating01 = 18
     end
