@@ -18,6 +18,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'capybara'
   #gem 'capybara-webkit'
