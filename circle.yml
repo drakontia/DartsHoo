@@ -27,7 +27,7 @@ database:
 
 test:
   override:
-    - docker run -d -p 3000:3000 -e "SECRET_KEY_BASE=foo" $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
+    - docker run -d -p 3000:3000 -e "SECRET_KEY_BASE=foo" $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BUILD_URL
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
 deployment:
@@ -36,4 +36,5 @@ deployment:
     commands:
       - chmod 777 script/auth-gcloud.sh
       - script/auth-gcloud.sh
-      - gcloud docker push $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME > /dev/null
+      - docker tag $CIRCLE_USERNAME/$CIRCLE_PROJECT_REPONAME $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME
+      - gcloud docker -- push $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME > /dev/null
