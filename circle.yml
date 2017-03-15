@@ -18,8 +18,8 @@ dependencies:
     - chmod 777 script/ensure-gcloud-installed.sh
     - script/ensure-gcloud-installed.sh
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
-    - docker build -t $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
-    - mkdir -p ~/docker; docker save $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 > ~/docker/image.tar
+    - docker build -t $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BUILD_NUM .
+    - mkdir -p ~/docker; docker save $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BUILD_NUM > ~/docker/image.tar
 
 database:
   override:
@@ -27,7 +27,7 @@ database:
 
 test:
   override:
-    - docker run -d -p 3000:3000 -e "SECRET_KEY_BASE=foo" $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BUILD_URL
+    - docker run -d -p 3000:3000 -e "SECRET_KEY_BASE=foo" $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BUILD_NUM
     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
 deployment:
