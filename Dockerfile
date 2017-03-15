@@ -1,30 +1,27 @@
-FROM ruby:2.3
+FROM phusion/passenger-ruby23
 
 ENV APP_ROOT /usr/src/DartsHoo
 
 WORKDIR $APP_ROOT
 
-RUN apt-get update && \
-    apt-get install -y nodejs \
-                       mysql-client \
-                       postgresql-client \
-                       sqlite3 \
-                       --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+# Enable nginx/passenger
+RUN rm -f /etc/service/nginx/down
 
-COPY Gemfile $APP_ROOT
-COPY Gemfile.lock $APP_ROOT
+# Disable SSH
+# Some discussion on this: https://news.ycombinator.com/item?id=7950326
+RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
-RUN \
-  echo 'gem: --no-document' >> ~/.gemrc && \
-  cp ~/.gemrc /etc/gemrc && \
-  chmod uog+r /etc/gemrc && \
-  bundle config --global build.nokogiri --use-system-libraries && \
-  bundle config --global jobs 4 && \
-  bundle install && \
-  rm -rf ~/.gem
+# Install rails dependencies
+RUN apt-get update
+RUN apt-get -y install sqlite3 libsqlite3-dev
 
+# Copy in app and config files
+COPY nginx/rails-env.conf /etc/nginx/main.d/rails-env.conf
+COPY nginx/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 COPY . $APP_ROOT
 
+RUN bundle install
+#RUN RAILS_ENV=production rake db:migrate
+
 EXPOSE 3000
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["/sbin/my_init"]
