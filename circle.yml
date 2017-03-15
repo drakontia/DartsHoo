@@ -15,6 +15,7 @@ dependencies:
     - ~/google-cloud-sdk
     - ~/docker
   override:
+    - chmod 777 script/ensure-gcloud-installed.sh
     - script/ensure-gcloud-installed.sh
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
@@ -33,5 +34,6 @@ deployment:
   prod:
     branch: master
     commands:
+      - chmod 777 script/auth-gcloud.sh
       - script/auth-gcloud.sh
       - gcloud docker push $EXTERNAL_REGISTRY_ENDPOINT/$CIRCLE_PROJECT_REPONAME > /dev/null
