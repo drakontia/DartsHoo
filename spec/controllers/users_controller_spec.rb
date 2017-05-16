@@ -11,7 +11,9 @@ describe UsersController, type: :controller do
   describe 'GET #show' do
     it "assigns the requested user to @user" do
       get :show, params: { id: user }
+      expect(response.status).to eq 200
       expect(assigns(:user)).to eq user
+      expect(response).to render_template :show
     end
   end
 

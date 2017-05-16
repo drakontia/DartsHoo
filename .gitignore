@@ -7,3 +7,9 @@ log/
 tmp/cache/
 vendor/bundle/
 vendor/path/
+
+db/dartshoo_test
+
+.ruby-version
+
+.ruby-version
